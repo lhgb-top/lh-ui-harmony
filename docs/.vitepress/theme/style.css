@@ -1,0 +1,13 @@
+:root {
+  --vp-c-brand-1: #2b4c7c;
+  --vp-c-brand-2: #1f3a5f;
+  --vp-c-brand-3: #3d649e;
+  --vp-font-family-base: 'Noto Serif SC', 'STSong', 'SimSun', 'Source Han Serif SC', 'PingFang SC',
+    'Microsoft YaHei', serif;
+}
+
+:root.dark {
+  --vp-c-brand-1: #7fa6d9;
+  --vp-c-brand-2: #b1c1d8;
+  --vp-c-brand-3: #5078ab;
+}

@@ -1,0 +1,8 @@
+{
+  "string": [
+    { "name": "app_name", "value": "lh-ui 演示" },
+    { "name": "module_desc", "value": "lh-ui-harmony 组件演示应用" },
+    { "name": "ability_desc", "value": "组件演示入口" },
+    { "name": "ability_label", "value": "lh-ui 演示" }
+  ]
+}

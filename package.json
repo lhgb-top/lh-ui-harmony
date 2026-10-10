@@ -1,0 +1,27 @@
+{
+  "name": "@lh-ui/harmony",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "lh-ui 原生血脉鸿蒙端：ArkTS + ArkUI UI 库（构建期工具脚本，非运行时）",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.34.5",
+  "scripts": {
+    "link:tokens": "node scripts/link-tokens.mjs",
+    "link:tokens:check": "node scripts/link-tokens.mjs --check",
+    "gen:sim": "node scripts/gen-sim-tokens.mjs",
+    "docs:dev": "pnpm gen:sim && vitepress dev docs --port 5183",
+    "docs:build": "pnpm gen:sim && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "changeset": "changeset",
+    "changeset:version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.12",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.13"
+  },
+  "sideEffects": false
+}

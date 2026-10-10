@@ -1,0 +1,136 @@
+/**
+ * 鸿蒙平台特化外观（ArkUI 风格的按钮模拟）。
+ * 全部 var(--lh-*)，零字面量。与 ArkTS 侧 LhButtonTokens.resolve() 的映射一一对应。
+ */
+
+.sim-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lh-spacing-xs);
+  height: var(--lh-button-height-medium);
+  padding: 0 var(--lh-button-padding-horizontal-medium);
+  font-size: var(--lh-button-fontSize-medium);
+  font-weight: var(--lh-button-fontWeight);
+  font-family: var(--lh-typography-fontFamily);
+  color: var(--lh-color-text-primary);
+  background: var(--lh-color-background-default);
+  border: var(--lh-button-borderWidth) solid var(--lh-color-border-base);
+  border-radius: var(--lh-button-borderRadius);
+  box-shadow: var(--lh-shadow-lighter);
+  cursor: pointer;
+  transition: box-shadow var(--lh-motion-duration-base), background-color var(--lh-motion-duration-base);
+}
+
+.sim-btn:hover {
+  background: var(--lh-color-hover-bg);
+}
+
+.sim-btn:active {
+  box-shadow: none;
+}
+
+/* 类型 */
+.sim-btn--primary {
+  color: var(--lh-color-onPrimary);
+  background: var(--lh-color-primary-default);
+  border-color: transparent;
+}
+
+.sim-btn--success {
+  color: var(--lh-color-onPrimary);
+  background: var(--lh-color-success-default);
+  border-color: transparent;
+}
+
+.sim-btn--warning {
+  color: var(--lh-color-onPrimary);
+  background: var(--lh-color-warning-default);
+  border-color: transparent;
+}
+
+.sim-btn--danger {
+  color: var(--lh-color-onPrimary);
+  background: var(--lh-color-danger-default);
+  border-color: transparent;
+}
+
+.sim-btn--info {
+  color: var(--lh-color-onPrimary);
+  background: var(--lh-color-info-default);
+  border-color: transparent;
+}
+
+/* 尺寸 */
+.sim-btn--small {
+  height: var(--lh-button-height-small);
+  padding: 0 var(--lh-button-padding-horizontal-small);
+  font-size: var(--lh-button-fontSize-small);
+}
+
+.sim-btn--large {
+  height: var(--lh-button-height-large);
+  padding: 0 var(--lh-button-padding-horizontal-large);
+  font-size: var(--lh-button-fontSize-large);
+}
+
+/* 状态 */
+.sim-btn--disabled,
+.sim-btn--loading {
+  color: var(--lh-color-disabled-text);
+  background: var(--lh-color-disabled-bg);
+  border-color: var(--lh-color-disabled-border);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* 加载指示器（CSS 环形旋转） */
+.sim-btn__spinner {
+  width: var(--lh-button-iconSize-medium);
+  height: var(--lh-button-iconSize-medium);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: sim-btn-spin 0.8s linear infinite;
+}
+
+@keyframes sim-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 图标占位（方块示意，真机为 Material 图标矢量） */
+.sim-btn__icon {
+  width: var(--lh-button-iconSize-medium);
+  height: var(--lh-button-iconSize-medium);
+  background: currentColor;
+  opacity: 0.85;
+  /* 图标占位形状 */
+  clip-path: circle at 38% 38%;
+}
+
+/* 花纹底纹：斜纹叠加，消费 decoration 令牌 */
+.sim-btn--pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.sim-btn--pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--lh-color-decoration) 0,
+    var(--lh-color-decoration) 6px,
+    transparent 6px,
+    transparent 16px
+  );
+}
+
+.sim-btn--pattern > * {
+  position: relative;
+}

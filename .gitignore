@@ -1,0 +1,21 @@
+# 令牌生成物（由 scripts/link-tokens.mjs 从 ../lh-ui-core/dist/harmony 同步，禁止手改）
+tokens/
+
+# 文档模拟器令牌（由 scripts/gen-sim-tokens.mjs 生成）
+docs/.vitepress/theme/sim-tokens.css
+
+# DevEco 构建产物
+build/
+oh_modules/
+.local/
+.cxx/
+**/oh-package-lock.json5
+
+# node
+node_modules/
+.pnpm-store/
+
+# IDE
+.idea/
+*.iml
+.DS_Store

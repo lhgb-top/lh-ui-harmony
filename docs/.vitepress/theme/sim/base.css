@@ -1,0 +1,65 @@
+/**
+ * 模拟器基础样式：手机框 + 状态栏 + 屏幕区 + 说明条 + 行布局。
+ * 只吃 var(--lh-*)（由 sim-tokens.css 注入的令牌 CSS 变量），零令牌字面量（红线）。
+ * 平台特化外观见 android.css。
+ */
+
+/* 手机框 */
+.sim-phone {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  margin: 16px auto;
+  border-radius: 28px;
+  background: var(--lh-color-surface);
+  border: 1px solid var(--lh-color-border-base);
+  box-shadow: var(--lh-shadow-base);
+  overflow: hidden;
+}
+
+/* 状态栏 */
+.sim-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 28px;
+  padding: 0 16px;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--lh-color-text-secondary);
+  background: var(--lh-color-surface);
+  border-bottom: 1px solid var(--lh-border-extra-light, transparent);
+}
+
+/* 屏幕区 */
+.sim-screen {
+  padding: 16px;
+  background: var(--lh-color-background-page);
+  min-height: 240px;
+}
+
+/* 内容行 */
+.sim-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lh-spacing-sm);
+  align-items: center;
+  margin-bottom: var(--lh-spacing-md);
+}
+
+.sim-row:last-child {
+  margin-bottom: 0;
+}
+
+/* 说明条：声明这是 HTML 模拟，非真机渲染 */
+.sim-note {
+  margin: 8px auto 20px;
+  padding: 6px 12px;
+  max-width: 360px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--lh-color-text-secondary);
+  background: var(--lh-color-primary-bg);
+  border-radius: var(--lh-radius-small);
+}

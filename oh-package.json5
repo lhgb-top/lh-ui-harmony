@@ -1,0 +1,12 @@
+{
+  "name": "@lh-ui/harmony",
+  "version": "0.0.1",
+  "description": "lh-ui 原生血脉鸿蒙端：ArkTS + ArkUI 组件库（HarmonyOS NEXT）",
+  "main": "components/button/Index.ets",
+  "author": "lh-ui",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@ohos/hypium": "1.0.21"
+  }
+}
