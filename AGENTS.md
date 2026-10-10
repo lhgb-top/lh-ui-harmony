@@ -56,7 +56,16 @@ core 的 codegen 产物是 `LhTokens`（明）与 `LhDarkTokens`（暗）两个�
 - **回退形态**：家族布局不存在时（CI 单仓 clone），`@lh-ui/core` npm 包的 `files:["dist"]`
   含四端产物。ohpm 令牌 HAR 回退在 nM6 打通后接入。
 
-## 五、平台 gotcha
+## 五、命名规范（总纲 D20）
+
+- **平台包名一律反域名**：应用 bundleName 为 `top.lhgb.ui.harmony.demo`
+  （`AppScope/app.json5`）；ohpm 包名维持 `@lh-ui/harmony`（npm/ohpm scope 不受反域名约束）。
+- **自有标识符一律 LH 前缀**：类 / 结构体 / 枚举 / 组件 `Lh*`（`LhButton`、`LhButtonType`、
+  `LhPatternFill`、`LhDemoIndex`），工具函数 `lh*`（`lhVp`）；框架约定的模板名
+  （`EntryAbility`）除外。
+- npm / ohpm 的 `@lh-ui/*` scope 不受此约束。
+
+## 六、平台 gotcha
 
 - **单位**：尺寸/字号是无单位数值（vp）；ArkUI 的 `vp()` 是恒等换算（数值即 vp）。
   暗色对象不含尺寸令牌，取尺寸时始终走明色对象。
@@ -70,7 +79,7 @@ core 的 codegen 产物是 `LhTokens`（明）与 `LhDarkTokens`（暗）两个�
 - **圆角**：`Radius.circle` 是 0.5 分数，端侧取 `min(宽,高)/2` 换算，不能当 vp 用。
 - **entry 即文档**：entry 演示应用是组件示例的第一现场，文档站 HTML 模拟器是第二现场。
 
-## 六、命令速查
+## 七、命令速查
 
 | 任务 | 命令 | 说明 |
 | --- | --- | --- |

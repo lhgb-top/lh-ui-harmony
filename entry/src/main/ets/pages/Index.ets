@@ -8,7 +8,7 @@ import { LhTheme } from '../../../../common/theme/LhThemeApply'
  */
 @Entry
 @Component
-struct Index {
+struct LhDemoIndex {
   @State isDark: boolean = false
 
   aboutToAppear(): void {

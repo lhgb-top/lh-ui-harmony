@@ -65,34 +65,34 @@ export struct LhButton {
     Stack() {
       // 花纹底纹（垫在底色之下；不影响文字对比度）
       if (this.appearance.patternColor !== undefined) {
-        PatternFill({ patternColor: this.appearance.patternColor })
+        LhPatternFill({ patternColor: this.appearance.patternColor })
       }
 
       Row() {
         if (this.loading) {
           LoadingProgress()
-            .width(vp2(this.appearance.iconSize))
-            .height(vp2(this.appearance.iconSize))
+            .width(lhVp(this.appearance.iconSize))
+            .height(lhVp(this.appearance.iconSize))
             .color(this.appearance.contentColor)
         } else if (this.icon !== undefined) {
           Text('◆')
-            .fontSize(vp2(this.appearance.iconSize))
+            .fontSize(lhVp(this.appearance.iconSize))
             .fontColor(this.appearance.contentColor)
         }
         Text(this.text)
-          .fontSize(vp2(this.appearance.fontSize))
+          .fontSize(lhVp(this.appearance.fontSize))
           .fontWeight(this.fontWeight())
           .fontColor(this.appearance.contentColor)
       }
       .justifyContent(FlexAlign.Center)
     }
     .width('auto')
-    .height(vp2(this.appearance.height))
-    .padding({ left: vp2(this.appearance.paddingHorizontal), right: vp2(this.appearance.paddingHorizontal) })
+    .height(lhVp(this.appearance.height))
+    .padding({ left: lhVp(this.appearance.paddingHorizontal), right: lhVp(this.appearance.paddingHorizontal) })
     .backgroundColor(this.appearance.containerColor)
-    .borderRadius(vp2(this.appearance.borderRadius))
+    .borderRadius(lhVp(this.appearance.borderRadius))
     .border({
-      width: vp2(this.appearance.borderWidth),
+      width: lhVp(this.appearance.borderWidth),
       color: this.appearance.borderColor,
     })
     .shadow({
@@ -116,7 +116,7 @@ const LhTokensButtonFontWeight = 400
 
 /** 国风花纹底纹：45° 斜纹叠加（消费 color.decoration 令牌），与 web 血脉方案对齐 */
 @Component
-struct PatternFill {
+struct LhPatternFill {
   @Prop patternColor: ResourceColor = Color.Transparent
 
   build() {
@@ -139,6 +139,6 @@ struct PatternFill {
 }
 
 /** 尺寸数值（vp 令牌）→ Dimension */
-function vp2(n: number): number {
+function lhVp(n: number): number {
   return n
 }

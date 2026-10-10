@@ -1,0 +1,11 @@
+// 应用级配置（演示应用）。bundleName 遵循家族命名规范（总纲 D20）：反域名 top.lhgb.ui。
+{
+  "app": {
+    "bundleName": "top.lhgb.ui.harmony.demo",
+    "vendor": "lh-ui",
+    "versionCode": 1000000,
+    "versionName": "0.0.1",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
+}
