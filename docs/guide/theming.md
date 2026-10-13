@@ -10,7 +10,7 @@
 | `LhDarkTokens` | 仅 `Color` 子类（**并列对象**模型） | 暗色只覆盖颜色，尺寸/动效/圆角暗色不变 |
 | `LhShadow` | ArkUI 阴影载体接口（color/radius/offsetX/offsetY） | — |
 
-> 这与 android / ios 一致（并列对象），与 C 端（宏重定义覆盖）、docs 端（浅合并 JSON）形态不同。
+> 这与 android / ios / windows 一致（并列对象），与 docs 端（浅合并 JSON）形态不同。
 > 主题层据此设计：`LhColors` 接口只承载颜色，尺寸由组件直接取 `LhTokens`。
 
 ## LhColors

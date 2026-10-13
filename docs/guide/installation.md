@@ -8,14 +8,14 @@
 ## ohpm 引入（nM6 发包链路打通后）
 
 ```bash
-ohpm install @lh-ui/harmony
+ohpm install top.lhgb.ui.harmony
 ```
 
 ```json5
 // oh-package.json5
 {
   "dependencies": {
-    "@lh-ui/harmony": "^0.0.1"
+    "top.lhgb.ui.harmony": "^0.0.1"
   }
 }
 ```

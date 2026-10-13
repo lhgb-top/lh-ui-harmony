@@ -1,7 +1,7 @@
 /**
  * 模拟器基础样式：手机框 + 状态栏 + 屏幕区 + 说明条 + 行布局。
  * 只吃 var(--lh-*)（由 sim-tokens.css 注入的令牌 CSS 变量），零令牌字面量（红线）。
- * 平台特化外观见 android.css。
+ * 平台特化外观见 harmony.css。
  */
 
 /* 手机框 */
@@ -28,7 +28,7 @@
   line-height: 1;
   color: var(--lh-color-text-secondary);
   background: var(--lh-color-surface);
-  border-bottom: 1px solid var(--lh-border-extra-light, transparent);
+  border-bottom: 1px solid var(--lh-color-border-extraLight, transparent);
 }
 
 /* 屏幕区 */
@@ -62,4 +62,44 @@
   color: var(--lh-color-text-secondary);
   background: var(--lh-color-primary-bg);
   border-radius: var(--lh-radius-small);
+}
+
+/* =====================================================================================
+ * 真渲染对照图（总纲 D21）：各端真实渲染管线出图（Android Paparazzi / iOS SwiftUI 快照 /
+ * 鸿蒙 entry 截图 / Windows WinUI 截图），与 HTML 模拟并排展示，消除「已见即真机」的错觉。
+ * 引用方式见各组件 md 的 <figure class="sim-true">；图片构建期由脚本拷入 docs/true/。
+ * ===================================================================================== */
+
+.sim-true {
+  margin: 16px auto 4px;
+  max-width: 360px;
+  text-align: center;
+}
+
+.sim-true__img {
+  display: block;
+  width: 100%;
+  border-radius: var(--lh-radius-small);
+  border: 1px solid var(--lh-color-border-base);
+  box-shadow: var(--lh-shadow-lighter);
+}
+
+/* 明/暗双图随站点主题自动切换：默认显示明色，html.dark 下切换为暗色 */
+.sim-true__img--dark {
+  display: none;
+}
+
+html.dark .sim-true__img--light {
+  display: none;
+}
+
+html.dark .sim-true__img--dark {
+  display: block;
+}
+
+.sim-true__caption {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--lh-color-text-secondary);
 }

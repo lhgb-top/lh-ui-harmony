@@ -19,7 +19,14 @@
   "modules": [
     {
       "name": "entry",
-      "srcPath": "./entry"
+      "srcPath": "./entry",
+      "targets": [
+        // 模块 target 只接受 name / applyToProducts；runtimeOS 属于 product 层，写在这里会触发 schema 校验失败。
+        {
+          "name": "default",
+          "applyToProducts": ["default"]
+        }
+      ]
     }
   ]
 }

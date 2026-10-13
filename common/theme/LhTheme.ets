@@ -53,6 +53,8 @@ export interface LhColors {
   hoverBg: ResourceColor
   selected: ResourceColor
   focus: ResourceColor
+  /** 中性黑（墨）：toast 胶囊底色（toast 契约 tokenRefs: color.ink） */
+  ink: ResourceColor
 }
 
 /** 明色色板：逐字段取 LhTokens.Color */
@@ -100,6 +102,7 @@ export function LightLhColors(): LhColors {
     hoverBg: LhTokens.Color.hoverBg,
     selected: LhTokens.Color.selected,
     focus: LhTokens.Color.focus,
+    ink: LhTokens.Color.ink,
   }
 }
 
@@ -148,6 +151,7 @@ export function DarkLhColors(): LhColors {
     hoverBg: LhDarkTokens.Color.hoverBg,
     selected: LhDarkTokens.Color.selected,
     focus: LhDarkTokens.Color.focus,
+    ink: LhDarkTokens.Color.ink,
   }
 }
 

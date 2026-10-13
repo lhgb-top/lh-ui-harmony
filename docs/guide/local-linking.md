@@ -8,7 +8,7 @@ lh-ui/                        # 家族父目录（非仓库）
 ├── lh-ui-android/            # 兄弟仓
 ├── lh-ui-ios/
 ├── lh-ui-harmony/            # 本仓
-└── lh-ui-c/
+└── lh-ui-windows/
 ```
 
 各仓同父目录时，令牌**本地直连**；兄弟仓不存在（CI 单仓 clone）时**自动回退 npm 包**。
@@ -32,7 +32,7 @@ cd ../lh-ui-core
 vim tokens/color.json           # 或 spacing / typography / ...
 
 # 2. 重新生成 + 校验
-pnpm codegen                    # 生成 dist/ 五端产物
+pnpm codegen                    # 生成 dist/ 四端产物
 pnpm verify                     # schema + 引用 + WCAG 对比度 + 契约一致性
 
 # 3. 回本仓同步

@@ -1,0 +1,16 @@
+// entry 演示模块清单。库本体在仓根（top.lhgb.ui.harmony），本模块以 file:../ 引用（D18/D21）。
+// 测试源集 entry/src/test/ 由 hvigor 自动发现（@ohos/hypium），黄金用例随之迁入。
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "lh-ui-harmony 组件演示应用（全形态 + 明暗切换）",
+  "main": "",
+  "author": "lh-ui",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "top.lhgb.ui.harmony": "file:../"
+  },
+  "devDependencies": {
+    "@ohos/hypium": "1.0.21"
+  }
+}

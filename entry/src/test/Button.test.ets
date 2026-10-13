@@ -1,7 +1,4 @@
-import { LhButtonType, LhButtonSize, LhButtonTokens } from '../../../components/button/LhButtonTokens'
-import { LightLhColors, DarkLhColors } from '../../../common/theme/LhTheme'
-import { LhTokens } from '../../../tokens/LhTokens'
-import { LhDarkTokens } from '../../../tokens/LhDarkTokens'
+import { LhButtonType, LhButtonSize, LhButtonTokens, LightLhColors, DarkLhColors, LhTokens, LhDarkTokens } from 'top.lhgb.ui.harmony'
 import { describe, it, expect } from '@ohos/hypium'
 
 /**
@@ -90,3 +87,4 @@ export default function buttonTest(): void {
     })
   })
 }
+

@@ -4,11 +4,16 @@ tokens/
 # 文档模拟器令牌（由 scripts/gen-sim-tokens.mjs 生成）
 docs/.vitepress/theme/sim-tokens.css
 
+# VitePress 构建产物
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
 # DevEco 构建产物
 build/
 oh_modules/
 .local/
 .cxx/
+*.har
 **/oh-package-lock.json5
 
 # node
@@ -19,3 +24,6 @@ node_modules/
 .idea/
 *.iml
 .DS_Store
+
+# ZCode 工具目录（plan 文件等，非仓库内容）
+.zcode/

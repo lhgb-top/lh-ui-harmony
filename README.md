@@ -1,6 +1,6 @@
 # lh-ui-harmony
 
-> lh-ui 家族 · 原生血脉 · 鸿蒙端 —— **ArkTS + ArkUI**（HarmonyOS NEXT）UI 组件库（ohpm `@lh-ui/harmony`）。
+> lh-ui 家族 · 原生血脉 · 鸿蒙端 —— **ArkTS + ArkUI**（HarmonyOS NEXT）UI 组件库（ohpm `top.lhgb.ui.harmony`）。
 >
 > 同品牌的设计令牌、组件契约与黄金用例定义在 `lh-ui-core`（构建期中心，移动端运行时零 JS）；
 > 本仓只手写 ArkUI 组件。与 web 血脉（plus / vue2 / react / uniapp）互相独立、不共享运行时代码，
@@ -11,7 +11,7 @@
 - **国风设计语言**：青花瓷蓝主色、宣纸白底、藤黄朱砂点缀，衬线字体栈（由 core 令牌驱动）。
 - **令牌驱动**：组件零硬编码色值/间距，全部消费 codegen 生成的 `LhTokens` / `LhDarkTokens`。
 - **明暗双主题**：`LhTheme.apply(isDark)` 一行切换（AppStorage 注入），暗色令牌由 core 预计算。
-- **契约一致**：props 命名与 `lh-ui-core/specs` 逐条对齐，五端 + web 行为共享。
+- **契约一致**：props 命名与 `lh-ui-core/specs` 逐条对齐，四端 + web 行为共享。
 - **黄金用例**：`cases/button.json` 的 8 条断言翻译为 hypium 测试（DevEco 一键回归）。
 
 ## 快速开始
@@ -63,4 +63,4 @@ entry 演示应用与设备截图为准。
 | 成员 | 血脉 | 技术栈 |
 | --- | --- | --- |
 | lh-ui-share → plus / vue2 / react / uniapp | web | TS core + SCSS + 各框架 |
-| lh-ui-core → android / ios / **harmony** / c | 原生 | JSON 令牌 + codegen → 各端原生 |
+| lh-ui-core → android / ios / **harmony** / windows | 原生 | JSON 令牌 + codegen → 各端原生 |

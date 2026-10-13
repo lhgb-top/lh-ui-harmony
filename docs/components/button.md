@@ -165,7 +165,7 @@ LhButton({ onClick: () => {}, type: LhButtonType.Primary, text: '主要按钮' }
 
 ## 黄金用例对照
 
-`cases/button.json` 的 8 条断言与 hypium 测试的对应关系（`tests/Button.test.ets`）：
+`cases/button.json` 的 8 条断言与 hypium 测试的对应关系（`entry/src/test/Button.test.ets`）：
 
 | case id | 断言 | 本地测试 |
 | --- | --- | --- |
@@ -179,4 +179,4 @@ LhButton({ onClick: () => {}, type: LhButtonType.Primary, text: '主要按钮' }
 | `bgpattern-uses-decoration-token` | 花纹底消费装饰色 | `bgpattern_uses_decoration_token` |
 
 另有暗色专项：`dark_colors_come_from_dark_tokens` / `dimensions_are_identical_in_dark_mode`。
-运行：DevEco Studio 右键 `tests` → Run Tests。
+运行：DevEco Studio 右键 `entry/src/test` → Run Tests。

@@ -4,6 +4,16 @@
   "private": true,
   "type": "module",
   "description": "lh-ui 原生血脉鸿蒙端：ArkTS + ArkUI UI 库（构建期工具脚本，非运行时）",
+  "license": "Apache-2.0",
+  "author": "lhgb <i@lhgb.top>",
+  "homepage": "https://www.lhgb.top/lhui/harmony/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhgb-top/lh-ui-harmony.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lhgb-top/lh-ui-harmony/issues"
+  },
   "engines": {
     "node": ">=20"
   },
@@ -12,11 +22,16 @@
     "link:tokens": "node scripts/link-tokens.mjs",
     "link:tokens:check": "node scripts/link-tokens.mjs --check",
     "gen:sim": "node scripts/gen-sim-tokens.mjs",
+    "gen:icon": "node scripts/gen-app-icon.mjs",
+    "gen:docs": "node scripts/gen-doc-pages.mjs",
+    "docs:check": "node scripts/check-docs.mjs",
+    "sim:check": "node scripts/check-sim-vars.mjs",
     "docs:dev": "pnpm gen:sim && vitepress dev docs --port 5183",
     "docs:build": "pnpm gen:sim && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "changeset": "changeset",
-    "changeset:version": "changeset version"
+    "changeset:version": "changeset version && node scripts/sync-version.mjs",
+    "release:push": "node scripts/push-release.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",

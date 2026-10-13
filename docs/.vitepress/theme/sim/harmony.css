@@ -9,7 +9,7 @@
   justify-content: center;
   gap: var(--lh-spacing-xs);
   height: var(--lh-button-height-medium);
-  padding: 0 var(--lh-button-padding-horizontal-medium);
+  padding: 0 var(--lh-button-paddingHorizontal-medium);
   font-size: var(--lh-button-fontSize-medium);
   font-weight: var(--lh-button-fontWeight);
   font-family: var(--lh-typography-fontFamily);
@@ -23,7 +23,7 @@
 }
 
 .sim-btn:hover {
-  background: var(--lh-color-hover-bg);
+  background: var(--lh-color-hoverBg);
 }
 
 .sim-btn:active {
@@ -64,19 +64,19 @@
 /* 尺寸 */
 .sim-btn--small {
   height: var(--lh-button-height-small);
-  padding: 0 var(--lh-button-padding-horizontal-small);
+  padding: 0 var(--lh-button-paddingHorizontal-small);
   font-size: var(--lh-button-fontSize-small);
 }
 
 .sim-btn--large {
   height: var(--lh-button-height-large);
-  padding: 0 var(--lh-button-padding-horizontal-large);
+  padding: 0 var(--lh-button-paddingHorizontal-large);
   font-size: var(--lh-button-fontSize-large);
 }
 
-/* 状态 */
-.sim-btn--disabled,
-.sim-btn--loading {
+/* 状态（选择器提权到 (0,2,0)，压过 VitePress 基础规则 button:enabled 的 (0,1,1)） */
+.sim-btn.sim-btn--disabled,
+.sim-btn.sim-btn--loading {
   color: var(--lh-color-disabled-text);
   background: var(--lh-color-disabled-bg);
   border-color: var(--lh-color-disabled-border);
@@ -108,7 +108,7 @@
   background: currentColor;
   opacity: 0.85;
   /* 图标占位形状 */
-  clip-path: circle at 38% 38%;
+  clip-path: circle(50% at 38% 38%);
 }
 
 /* 花纹底纹：斜纹叠加，消费 decoration 令牌 */
@@ -134,3 +134,838 @@
 .sim-btn--pattern > * {
   position: relative;
 }
+
+/* =====================================================================================
+ * 以下为 P0 其余 13 个组件的鸿蒙特化模拟（icon / tag / cell / input / textarea /
+ * checkbox / radio / switch / loading / dialog / toast / picker / navbar）。
+ * 全部 var(--lh-*)，与 ArkTS 侧各 Lh<Comp>Tokens.resolve() 的映射一一对应。
+ * ===================================================================================== */
+
+/* ---------- Icon 图标 ---------- */
+
+.sim-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-icon-size-medium);
+  height: var(--lh-icon-size-medium);
+  font-size: var(--lh-icon-size-medium);
+  line-height: 1;
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+  cursor: pointer;
+}
+
+.sim-icon--small {
+  width: var(--lh-icon-size-small);
+  height: var(--lh-icon-size-small);
+  font-size: var(--lh-icon-size-small);
+}
+
+.sim-icon--large {
+  width: var(--lh-icon-size-large);
+  height: var(--lh-icon-size-large);
+  font-size: var(--lh-icon-size-large);
+}
+
+.sim-icon--primary { color: var(--lh-color-primary-default); }
+.sim-icon--success { color: var(--lh-color-success-default); }
+.sim-icon--warning { color: var(--lh-color-warning-default); }
+.sim-icon--danger { color: var(--lh-color-danger-default); }
+.sim-icon--info { color: var(--lh-color-info-default); }
+.sim-icon--regular { color: var(--lh-color-text-regular); }
+.sim-icon--secondary { color: var(--lh-color-text-secondary); }
+
+/* ---------- Tag 标签 ---------- */
+
+.sim-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--lh-spacing-xs);
+  height: var(--lh-tag-height-medium);
+  padding: 0 var(--lh-tag-paddingHorizontal-medium);
+  font-size: var(--lh-tag-fontSize-medium);
+  font-family: var(--lh-typography-fontFamily);
+  color: var(--lh-color-text-primary);
+  background: var(--lh-color-background-default);
+  border: var(--lh-tag-borderWidth) solid var(--lh-color-border-base);
+  border-radius: var(--lh-tag-borderRadius);
+  white-space: nowrap;
+}
+
+.sim-tag--small {
+  height: var(--lh-tag-height-small);
+  padding: 0 var(--lh-tag-paddingHorizontal-small);
+  font-size: var(--lh-tag-fontSize-small);
+}
+
+.sim-tag--large {
+  height: var(--lh-tag-height-large);
+  padding: 0 var(--lh-tag-paddingHorizontal-large);
+  font-size: var(--lh-tag-fontSize-large);
+}
+
+/* 圆角态：圆角 = 高度一半（与端侧 round 的换算一致） */
+.sim-tag--round {
+  border-radius: calc(var(--lh-tag-height-medium) / 2);
+}
+
+.sim-tag--round.sim-tag--small { border-radius: calc(var(--lh-tag-height-small) / 2); }
+.sim-tag--round.sim-tag--large { border-radius: calc(var(--lh-tag-height-large) / 2); }
+
+/* 语义类型（实心） */
+.sim-tag--primary { color: var(--lh-color-onPrimary); background: var(--lh-color-primary-default); border-color: transparent; }
+.sim-tag--success { color: var(--lh-color-onPrimary); background: var(--lh-color-success-default); border-color: transparent; }
+.sim-tag--warning { color: var(--lh-color-onPrimary); background: var(--lh-color-warning-default); border-color: transparent; }
+.sim-tag--danger { color: var(--lh-color-onPrimary); background: var(--lh-color-danger-default); border-color: transparent; }
+.sim-tag--info { color: var(--lh-color-onPrimary); background: var(--lh-color-info-default); border-color: transparent; }
+
+/* 描边态（plain）：语义浅底 + 语义文字 + 语义描边 */
+.sim-tag--primary.sim-tag--plain { color: var(--lh-color-primary-default); background: var(--lh-color-primary-bg); border-color: var(--lh-color-primary-default); }
+.sim-tag--success.sim-tag--plain { color: var(--lh-color-success-default); background: var(--lh-color-success-bg); border-color: var(--lh-color-success-default); }
+.sim-tag--warning.sim-tag--plain { color: var(--lh-color-warning-default); background: var(--lh-color-warning-bg); border-color: var(--lh-color-warning-default); }
+.sim-tag--danger.sim-tag--plain { color: var(--lh-color-danger-default); background: var(--lh-color-danger-bg); border-color: var(--lh-color-danger-default); }
+.sim-tag--info.sim-tag--plain { color: var(--lh-color-info-default); background: var(--lh-color-info-bg); border-color: var(--lh-color-info-default); }
+
+/* 关闭符 */
+.sim-tag__close {
+  font-size: calc(var(--lh-tag-fontSize-medium) - 2px);
+  line-height: 1;
+  color: inherit;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+/* ---------- Cell 单元格 ---------- */
+
+.sim-cell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--lh-cell-paddingVertical) var(--lh-cell-paddingHorizontal);
+  background: var(--lh-color-background-default);
+  cursor: default;
+}
+
+.sim-cell--clickable {
+  cursor: pointer;
+}
+
+.sim-cell--clickable:hover {
+  background: var(--lh-color-hoverBg);
+}
+
+/* 底部分隔线（bordered 为 true 时绘制） */
+.sim-cell--bordered {
+  border-bottom: var(--lh-input-borderWidth) solid var(--lh-color-border-lighter);
+}
+
+.sim-cell__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-navbar-iconSize);
+  height: var(--lh-navbar-iconSize);
+  font-size: var(--lh-navbar-iconSize);
+  color: var(--lh-color-text-regular);
+  margin-right: var(--lh-cell-gap);
+}
+
+.sim-cell__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.sim-cell__title {
+  display: flex;
+  align-items: center;
+  font-size: var(--lh-cell-fontSizeTitle);
+  color: var(--lh-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sim-cell__required {
+  color: var(--lh-color-danger-default);
+  margin-right: var(--lh-spacing-xs);
+}
+
+.sim-cell__label {
+  margin-top: var(--lh-cell-gap);
+  font-size: var(--lh-cell-fontSizeLabel);
+  color: var(--lh-color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sim-cell__value {
+  flex: none;
+  margin-left: var(--lh-cell-gap);
+  font-size: var(--lh-cell-fontSizeValue);
+  color: var(--lh-color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sim-cell__arrow {
+  flex: none;
+  margin-left: var(--lh-spacing-xs);
+  font-size: var(--lh-navbar-iconSize);
+  line-height: 1;
+  color: var(--lh-color-text-secondary);
+}
+
+/* ---------- Input 输入框 ---------- */
+
+.sim-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--lh-input-height-medium);
+  padding: 0 var(--lh-input-paddingHorizontal-medium);
+  background: var(--lh-color-background-default);
+  border: var(--lh-input-borderWidth) solid var(--lh-color-border-base);
+  border-radius: var(--lh-input-borderRadius);
+}
+
+.sim-input--small {
+  height: var(--lh-input-height-small);
+  padding: 0 var(--lh-input-paddingHorizontal-small);
+}
+
+.sim-input--large {
+  height: var(--lh-input-height-large);
+  padding: 0 var(--lh-input-paddingHorizontal-large);
+}
+
+/* 聚焦环：focus 色 + focusRingWidth 描边 */
+.sim-input--focused {
+  border-color: var(--lh-color-focus);
+  box-shadow: 0 0 0 var(--lh-input-focusRingWidth) var(--lh-color-focus);
+}
+
+.sim-input--disabled {
+  background: var(--lh-color-background-disabled);
+  cursor: not-allowed;
+}
+
+.sim-input__field {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--lh-input-fontSize-medium);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-input--small .sim-input__field { font-size: var(--lh-input-fontSize-small); }
+.sim-input--large .sim-input__field { font-size: var(--lh-input-fontSize-large); }
+
+.sim-input__field::placeholder {
+  color: var(--lh-color-text-placeholder);
+}
+
+.sim-input--disabled .sim-input__field {
+  color: var(--lh-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.sim-input__clear {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-input-clearIconSize);
+  height: var(--lh-input-clearIconSize);
+  font-size: var(--lh-input-clearIconSize);
+  line-height: 1;
+  color: var(--lh-color-text-placeholder);
+  cursor: pointer;
+}
+
+/* ---------- Textarea 多行输入 ---------- */
+
+.sim-textarea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: var(--lh-textarea-minHeight);
+  padding: var(--lh-textarea-paddingVertical) var(--lh-textarea-paddingHorizontal);
+  background: var(--lh-color-background-default);
+  border: var(--lh-textarea-borderWidth) solid var(--lh-color-border-base);
+  border-radius: var(--lh-textarea-borderRadius);
+}
+
+.sim-textarea--focused {
+  border-color: var(--lh-color-focus);
+  box-shadow: 0 0 0 var(--lh-textarea-focusRingWidth) var(--lh-color-focus);
+}
+
+.sim-textarea--disabled {
+  background: var(--lh-color-background-disabled);
+}
+
+.sim-textarea__field {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: var(--lh-textarea-fontSize);
+  line-height: var(--lh-typography-lineHeight-primary);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-textarea__field::placeholder {
+  color: var(--lh-color-text-placeholder);
+}
+
+.sim-textarea--disabled .sim-textarea__field {
+  color: var(--lh-color-disabled-text);
+}
+
+.sim-textarea__count {
+  flex: none;
+  align-self: flex-end;
+  margin-top: var(--lh-spacing-xs);
+  font-size: var(--lh-textarea-countFontSize);
+  color: var(--lh-color-text-secondary);
+}
+
+/* ---------- Checkbox 复选框 ---------- */
+
+.sim-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-checkbox-gap);
+  cursor: pointer;
+}
+
+.sim-checkbox--disabled {
+  cursor: not-allowed;
+}
+
+.sim-checkbox__box {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-checkbox-size-medium);
+  height: var(--lh-checkbox-size-medium);
+  font-size: var(--lh-checkbox-size-medium);
+  line-height: 1;
+  color: var(--lh-color-onPrimary);
+  background: transparent;
+  border: var(--lh-checkbox-borderWidth) solid var(--lh-color-border-base);
+  border-radius: var(--lh-checkbox-borderRadius);
+}
+
+.sim-checkbox--small .sim-checkbox__box {
+  width: var(--lh-checkbox-size-small);
+  height: var(--lh-checkbox-size-small);
+  font-size: var(--lh-checkbox-size-small);
+}
+
+.sim-checkbox--large .sim-checkbox__box {
+  width: var(--lh-checkbox-size-large);
+  height: var(--lh-checkbox-size-large);
+  font-size: var(--lh-checkbox-size-large);
+}
+
+/* 选中态：主色底 + onPrimary 勾 */
+.sim-checkbox--checked .sim-checkbox__box {
+  background: var(--lh-color-primary-default);
+  border-color: var(--lh-color-primary-default);
+}
+
+/* 半选态：次要色横杠 */
+.sim-checkbox--indeterminate .sim-checkbox__box {
+  color: var(--lh-color-text-secondary);
+  background: transparent;
+  border-color: var(--lh-color-text-secondary);
+}
+
+.sim-checkbox--disabled .sim-checkbox__box {
+  background: var(--lh-color-disabled-bg);
+  border-color: var(--lh-color-disabled-border);
+  color: var(--lh-color-disabled-text);
+}
+
+.sim-checkbox__label {
+  font-size: var(--lh-typography-fontSize-base);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-checkbox--disabled .sim-checkbox__label {
+  color: var(--lh-color-disabled-text);
+}
+
+/* ---------- Radio 单选框 ---------- */
+
+.sim-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-radio-gap);
+  cursor: pointer;
+}
+
+.sim-radio--disabled {
+  cursor: not-allowed;
+}
+
+.sim-radio__ring {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-radio-size-medium);
+  height: var(--lh-radio-size-medium);
+  border: var(--lh-radio-ringWidth) solid var(--lh-color-border-base);
+  border-radius: 50%;
+}
+
+.sim-radio--small .sim-radio__ring {
+  width: var(--lh-radio-size-small);
+  height: var(--lh-radio-size-small);
+}
+
+.sim-radio--large .sim-radio__ring {
+  width: var(--lh-radio-size-large);
+  height: var(--lh-radio-size-large);
+}
+
+/* 选中态：主色描边 + 内圆点（直径 = 外环尺寸 × dotScale） */
+.sim-radio--checked .sim-radio__ring {
+  border-color: var(--lh-color-primary-default);
+}
+
+.sim-radio__dot {
+  width: calc(var(--lh-radio-size-medium) / 2);
+  height: calc(var(--lh-radio-size-medium) / 2);
+  border-radius: 50%;
+  background: var(--lh-color-primary-default);
+}
+
+.sim-radio--small .sim-radio__dot {
+  width: calc(var(--lh-radio-size-small) / 2);
+  height: calc(var(--lh-radio-size-small) / 2);
+}
+
+.sim-radio--large .sim-radio__dot {
+  width: calc(var(--lh-radio-size-large) / 2);
+  height: calc(var(--lh-radio-size-large) / 2);
+}
+
+.sim-radio--disabled .sim-radio__ring {
+  border-color: var(--lh-color-disabled-border);
+}
+
+.sim-radio--disabled.sim-radio--checked .sim-radio__dot {
+  background: var(--lh-color-disabled-text);
+}
+
+.sim-radio__label {
+  font-size: var(--lh-typography-fontSize-base);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-radio--disabled .sim-radio__label {
+  color: var(--lh-color-disabled-text);
+}
+
+/* ---------- Switch 开关 ---------- */
+
+.sim-switch {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--lh-switch-width-medium);
+  height: var(--lh-switch-height-medium);
+  border-radius: calc(var(--lh-switch-height-medium) / 2);
+  background: var(--lh-color-background-disabled);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color var(--lh-motion-duration-base) var(--lh-motion-easing-easeInOut);
+}
+
+.sim-switch--small {
+  width: var(--lh-switch-width-small);
+  height: var(--lh-switch-height-small);
+  border-radius: calc(var(--lh-switch-height-small) / 2);
+}
+
+.sim-switch--large {
+  width: var(--lh-switch-width-large);
+  height: var(--lh-switch-height-large);
+  border-radius: calc(var(--lh-switch-height-large) / 2);
+}
+
+/* 开轨：主色；关轨：禁用底色 */
+.sim-switch--checked {
+  background: var(--lh-color-primary-default);
+}
+
+.sim-switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 滑块：直径 = 高度 − 2 × gap，偏移随开合切换 */
+.sim-switch__thumb {
+  position: absolute;
+  top: var(--lh-switch-gap);
+  left: var(--lh-switch-gap);
+  width: calc(var(--lh-switch-height-medium) - 2 * var(--lh-switch-gap));
+  height: calc(var(--lh-switch-height-medium) - 2 * var(--lh-switch-gap));
+  border-radius: 50%;
+  background: var(--lh-color-onPrimary);
+  box-shadow: var(--lh-shadow-lighter);
+  transition: left var(--lh-motion-duration-base) var(--lh-motion-easing-easeInOut);
+}
+
+.sim-switch--small .sim-switch__thumb {
+  width: calc(var(--lh-switch-height-small) - 2 * var(--lh-switch-gap));
+  height: calc(var(--lh-switch-height-small) - 2 * var(--lh-switch-gap));
+}
+
+.sim-switch--large .sim-switch__thumb {
+  width: calc(var(--lh-switch-height-large) - 2 * var(--lh-switch-gap));
+  height: calc(var(--lh-switch-height-large) - 2 * var(--lh-switch-gap));
+}
+
+.sim-switch--checked .sim-switch__thumb {
+  left: calc(var(--lh-switch-width-medium) - var(--lh-switch-height-medium) + var(--lh-switch-gap));
+}
+
+.sim-switch--checked.sim-switch--small .sim-switch__thumb {
+  left: calc(var(--lh-switch-width-small) - var(--lh-switch-height-small) + var(--lh-switch-gap));
+}
+
+.sim-switch--checked.sim-switch--large .sim-switch__thumb {
+  left: calc(var(--lh-switch-width-large) - var(--lh-switch-height-large) + var(--lh-switch-gap));
+}
+
+/* ---------- Loading 加载 ---------- */
+
+.sim-loading {
+  flex: none;
+  width: var(--lh-loading-size-medium);
+  height: var(--lh-loading-size-medium);
+  border: var(--lh-loading-strokeWidth) solid var(--lh-color-primary-default);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: sim-loading-spin var(--lh-motion-duration-base) linear infinite;
+}
+
+.sim-loading--small {
+  width: var(--lh-loading-size-small);
+  height: var(--lh-loading-size-small);
+}
+
+.sim-loading--large {
+  width: var(--lh-loading-size-large);
+  height: var(--lh-loading-size-large);
+}
+
+.sim-loading--success { border-color: var(--lh-color-success-default); border-top-color: transparent; }
+.sim-loading--warning { border-color: var(--lh-color-warning-default); border-top-color: transparent; }
+.sim-loading--danger { border-color: var(--lh-color-danger-default); border-top-color: transparent; }
+.sim-loading--info { border-color: var(--lh-color-info-default); border-top-color: transparent; }
+
+@keyframes sim-loading-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Dialog 对话框 ---------- */
+
+.sim-dialog-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--lh-zIndex-modalBackdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--lh-spacing-xl);
+  background: var(--lh-color-background-overlay);
+}
+
+.sim-dialog {
+  width: 100%;
+  max-width: var(--lh-dialog-width);
+  padding: var(--lh-dialog-paddingVertical) var(--lh-dialog-paddingHorizontal);
+  background: var(--lh-color-background-default);
+  border-radius: var(--lh-dialog-borderRadius);
+  box-shadow: var(--lh-shadow-base);
+}
+
+.sim-dialog__title {
+  margin: 0;
+  font-size: var(--lh-dialog-titleFontSize);
+  font-weight: var(--lh-typography-fontWeight-bold);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-dialog__content {
+  margin-top: var(--lh-dialog-gap);
+  font-size: var(--lh-dialog-contentFontSize);
+  line-height: var(--lh-typography-lineHeight-primary);
+  color: var(--lh-color-text-regular);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--lh-spacing-sm);
+  margin-top: var(--lh-dialog-gap);
+}
+
+/* ---------- Toast 轻提示 ---------- */
+
+.sim-toast {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--lh-zIndex-toast);
+  display: inline-flex;
+  align-items: center;
+  max-width: 80%;
+  padding: var(--lh-toast-paddingVertical) var(--lh-toast-paddingHorizontal);
+  background: var(--lh-color-ink);
+  border-radius: var(--lh-toast-borderRadius);
+  box-shadow: var(--lh-shadow-base);
+  font-size: var(--lh-toast-fontSize);
+  color: var(--lh-color-onPrimary);
+  font-family: var(--lh-typography-fontFamily);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sim-toast--top { top: var(--lh-spacing-xl); }
+.sim-toast--bottom { bottom: var(--lh-spacing-xl); }
+.sim-toast--center { top: 50%; transform: translate(-50%, -50%); }
+
+.sim-toast__dot {
+  flex: none;
+  width: var(--lh-toast-fontSize);
+  height: var(--lh-toast-fontSize);
+  margin-right: var(--lh-toast-gap);
+  border-radius: 50%;
+  background: var(--lh-color-success-default);
+}
+
+.sim-toast__dot--success { background: var(--lh-color-success-default); }
+.sim-toast__dot--warning { background: var(--lh-color-warning-default); }
+.sim-toast__dot--danger { background: var(--lh-color-danger-default); }
+.sim-toast__dot--info { background: var(--lh-color-info-default); }
+
+/* ---------- Picker 选择器 ---------- */
+
+.sim-picker-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--lh-zIndex-modalBackdrop);
+  display: flex;
+  align-items: flex-end;
+  background: var(--lh-color-background-overlay);
+}
+
+.sim-picker {
+  width: 100%;
+  height: var(--lh-picker-height);
+  background: var(--lh-color-background-default);
+  border-radius: var(--lh-picker-borderRadius) var(--lh-picker-borderRadius) 0 0;
+  box-shadow: var(--lh-shadow-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-picker__toolbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: var(--lh-picker-toolbarHeight);
+  padding: 0 var(--lh-spacing-base);
+  border-bottom: var(--lh-input-borderWidth) solid var(--lh-color-border-lighter);
+}
+
+.sim-picker__cancel {
+  flex: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--lh-typography-fontSize-base);
+  color: var(--lh-color-text-regular);
+  font-family: var(--lh-typography-fontFamily);
+  padding: 0 var(--lh-spacing-xs);
+}
+
+.sim-picker__title {
+  flex: 1;
+  text-align: center;
+  font-size: var(--lh-typography-fontSize-medium);
+  font-weight: var(--lh-typography-fontWeight-bold);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-picker__confirm {
+  flex: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--lh-typography-fontSize-base);
+  color: var(--lh-color-primary-default);
+  font-family: var(--lh-typography-fontFamily);
+  padding: 0 var(--lh-spacing-xs);
+}
+
+.sim-picker__wheel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 滚轮选中区高亮带（上下两条分隔线） */
+.sim-picker__wheel::before,
+.sim-picker__wheel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--lh-input-borderWidth);
+  background: var(--lh-color-border-lighter);
+}
+
+.sim-picker__wheel::before { top: calc(50% - var(--lh-picker-itemHeight) / 2); }
+.sim-picker__wheel::after { bottom: calc(50% - var(--lh-picker-itemHeight) / 2); }
+
+.sim-picker__item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--lh-picker-itemHeight);
+  font-size: var(--lh-picker-itemFontSize);
+  color: var(--lh-color-text-primary);
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-picker__item--active {
+  color: var(--lh-color-primary-default);
+  font-weight: var(--lh-typography-fontWeight-bold);
+}
+
+.sim-picker__item--adjacent {
+  color: var(--lh-color-text-secondary);
+}
+
+/* ---------- Navbar 导航栏 ---------- */
+
+.sim-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--lh-navbar-height);
+  padding: 0 var(--lh-navbar-paddingHorizontal);
+  background: var(--lh-color-background-default);
+}
+
+/* 底部分隔线（bordered 为 true 时绘制） */
+.sim-navbar--bordered {
+  border-bottom: var(--lh-navbar-borderWidth) solid var(--lh-color-border-lighter);
+}
+
+.sim-navbar__side {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lh-spacing-xs);
+  min-width: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--lh-typography-fontFamily);
+}
+
+.sim-navbar__left { justify-content: flex-start; }
+.sim-navbar__right { justify-content: flex-end; }
+
+.sim-navbar__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lh-navbar-iconSize);
+  height: var(--lh-navbar-iconSize);
+  font-size: var(--lh-navbar-iconSize);
+  line-height: 1;
+  color: var(--lh-color-text-primary);
+}
+
+.sim-navbar__side-text {
+  font-size: var(--lh-typography-fontSize-base);
+  color: var(--lh-color-text-primary);
+  white-space: nowrap;
+}
+
+.sim-navbar__title {
+  position: absolute;
+  left: var(--lh-navbar-paddingHorizontal);
+  right: var(--lh-navbar-paddingHorizontal);
+  text-align: center;
+  pointer-events: none;
+  font-size: var(--lh-navbar-titleFontSize);
+  font-weight: var(--lh-typography-fontWeight-bold);
+  color: var(--lh-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--lh-typography-fontFamily);
+}
+
+/* Text 文本：消费全局排版令牌的展示型原语。与 LhTextTokens.resolve() 的映射一一对应。 */
+
+.sim-text {
+  font-family: var(--lh-typography-fontFamily);
+  font-size: var(--lh-typography-fontSize-base);
+  font-weight: var(--lh-typography-fontWeight-primary);
+  line-height: var(--lh-typography-lineHeight-primary);
+  color: var(--lh-color-text-primary);
+  text-align: start;
+}
+
+.sim-text--extraLarge { font-size: var(--lh-typography-fontSize-extraLarge); }
+.sim-text--large { font-size: var(--lh-typography-fontSize-large); }
+.sim-text--medium { font-size: var(--lh-typography-fontSize-medium); }
+.sim-text--small { font-size: var(--lh-typography-fontSize-small); }
+.sim-text--extraSmall { font-size: var(--lh-typography-fontSize-extraSmall); }
+
+.sim-text--bold { font-weight: var(--lh-typography-fontWeight-bold); }
+
+.sim-text--regular { color: var(--lh-color-text-regular); }
+.sim-text--secondary { color: var(--lh-color-text-secondary); }
+.sim-text--placeholder { color: var(--lh-color-text-placeholder); }
+.sim-text--disabled { color: var(--lh-color-text-disabled); }
+.sim-text--selected { color: var(--lh-color-selected); }
+
+.sim-text--align-center { text-align: center; }
+.sim-text--align-end { text-align: end; }

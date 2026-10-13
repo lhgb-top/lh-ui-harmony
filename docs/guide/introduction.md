@@ -7,7 +7,7 @@
 ```
                         ┌── web 血脉：share（TS core + SCSS）→ plus / vue2 / react / uniapp
 lh-ui 家族（同品牌）─────┤
-                        └── 原生血脉：core（JSON 令牌 + 契约 + codegen）→ android / ios / harmony / c
+                        └── 原生血脉：core（JSON 令牌 + 契约 + codegen）→ android / ios / harmony / windows
                                                                     ↑ 本仓
 ```
 

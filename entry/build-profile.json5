@@ -1,0 +1,11 @@
+// entry 模块级编译配置（stage 模型）。Schema 字段以 DevEco 打开工程时的提示为准。
+{
+  "apiType": "stageMode",
+  "buildOption": {},
+  "targets": [
+    {
+      "name": "default",
+      "runtimeOS": "HarmonyOS"
+    }
+  ]
+}
